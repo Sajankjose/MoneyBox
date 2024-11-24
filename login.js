@@ -1,5 +1,5 @@
-// Replace this with the correct raw URL or GitHub Pages URL
-const jsonDataUrl = "https://github.com/Sajankjose/MoneyBox/blob/main/students.js";
+// Use the correct raw GitHub URL for JSON
+const jsonDataUrl = "https://raw.githubusercontent.com/Sajankjose/MoneyBox/main/students.json";
 
 document.getElementById("loginForm").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -16,7 +16,7 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
             if (!response.ok) {
                 throw new Error("Failed to fetch JSON file. Check the URL.");
             }
-            return response.json();
+            return response.json(); // Parse response as JSON
         })
         .then(data => {
             console.log("Fetched Data:", data);
@@ -28,8 +28,8 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
 
             if (user) {
                 console.log("Login Successful for:", user);
-                localStorage.setItem("loggedInUser", username);
-                window.location.href = "dashboard.html";
+                localStorage.setItem("loggedInUser", username); // Save logged-in user
+                window.location.href = "dashboard.html"; // Redirect to dashboard
             } else {
                 console.error("Invalid credentials.");
                 const errorMessage = document.getElementById("errorMessage");
