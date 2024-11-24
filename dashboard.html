@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Welcome, <span id="studentName">Student</span>!</h1>
+        <div class="account-details">
+            <h2>Account Details</h2>
+            <p><strong>Balance:</strong> ₹<span id="balance">0.00</span></p>
+            <p><strong>Savings Goal:</strong> ₹<span id="goal">0.00</span></p>
+        </div>
+        <div class="gpt-interaction">
+            <h2>Financial Guidance</h2>
+            <textarea id="questionInput" placeholder="Ask something like 'How can I save faster?'"></textarea>
+            <button id="askButton">Ask GPT</button>
+            <div id="gptResponse" class="response"></div>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
