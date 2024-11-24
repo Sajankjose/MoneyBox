@@ -1,5 +1,5 @@
 // Use the correct raw GitHub URL for JSON
-const jsonDataUrl = "https://raw.githubusercontent.com/Sajankjose/MoneyBox/main/students.json";
+const jsonDataUrl = "https://github.com/Sajankjose/MoneyBox/blob/main/students.js";
 
 document.getElementById("loginForm").addEventListener("submit", function (event) {
     event.preventDefault();
