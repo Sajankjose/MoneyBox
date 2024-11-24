@@ -1,43 +1,33 @@
-// Mock student data for demonstration
-const studentData = {
-    username: "john_doe01",
-    name: "John Doe",
-    balance: 200,
-    goal: 500
-};
+// Replace with the URL of your hosted JSON file
+const jsonDataUrl = "https://raw.githubusercontent.com/your-username/your-repo/main/students.json";
 
-// Simulate loading user data into the dashboard
+// Fetch the data from the JSON file
 document.addEventListener("DOMContentLoaded", function () {
-    const studentName = document.getElementById("studentName");
-    const balance = document.getElementById("balance");
-    const goal = document.getElementById("goal");
+    fetch(jsonDataUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to fetch student data.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Simulate getting the logged-in user's username (e.g., from localStorage or query params)
+            const loggedInUsername = "john_doe01"; // Example hardcoded username
 
-    // Populate the dashboard with student data
-    studentName.textContent = studentData.name;
-    balance.textContent = studentData.balance.toFixed(2);
-    goal.textContent = studentData.goal.toFixed(2);
-});
+            // Find the user data from the fetched JSON
+            const userData = data.find(student => student.username === loggedInUsername);
 
-// GPT Interaction
-document.getElementById("askButton").addEventListener("click", function () {
-    const questionInput = document.getElementById("questionInput");
-    const gptResponse = document.getElementById("gptResponse");
-
-    // Get the student's question
-    const question = questionInput.value.trim();
-    if (!question) {
-        gptResponse.textContent = "Please enter a question.";
-        gptResponse.style.color = "red";
-        return;
-    }
-
-    gptResponse.textContent = "Thinking...";
-    gptResponse.style.color = "black";
-
-    // Simulate GPT API call
-    setTimeout(() => {
-        // Replace this with an actual GPT API response
-        const mockResponse = `Here's some advice for your question: "${question}"`;
-        gptResponse.textContent = mockResponse;
-    }, 2000);
+            if (userData) {
+                // Populate the dashboard with user data
+                document.getElementById("studentName").textContent = userData.name;
+                document.getElementById("balance").textContent = userData.balance.toFixed(2);
+                document.getElementById("goal").textContent = userData.goal.toFixed(2);
+            } else {
+                alert("User data not found!");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Failed to load student data.");
+        });
 });
