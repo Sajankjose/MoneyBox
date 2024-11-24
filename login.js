@@ -1,5 +1,5 @@
 // Replace this with the correct raw URL or GitHub Pages URL
-const jsonDataUrl = "https://raw.githubusercontent.com/your-username/your-repo/main/students.json";
+const jsonDataUrl = "https://raw.githubusercontent.com/Sajankjose/MoneyBox/main/students.json";
 
 document.getElementById("loginForm").addEventListener("submit", function (event) {
     event.preventDefault();
